@@ -1,6 +1,5 @@
 # UDPipe-Frysk
-Software for a Universal Dependencies lemmatizer/pos-tagger/annotator app for Frisian
-
+Software for a Universal Dependencies-based lemmatizer, POS-tagger, and annotator for Frisian.
 To build the Docker image and launch the container, follow the steps below.
 
 ### 1. Clone the Repo
