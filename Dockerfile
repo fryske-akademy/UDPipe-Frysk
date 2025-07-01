@@ -1,5 +1,5 @@
 # Use the Rocker project’s Shiny base image
-FROM rocker/shiny:latest
+FROM rocker/shiny:4.5.1
 
 # Install system dependencies
 RUN apt-get update
@@ -24,6 +24,9 @@ RUN rm -rf /var/lib/apt/lists/*
 
 # Copy your app to the container
 COPY ./ /srv/shiny-server/
+
+# Move custom config into place
+RUN mv /srv/shiny-server/shiny-server.conf /etc/shiny-server/shiny-server.conf
 
 # Set permissions
 RUN chown -R shiny:shiny /srv/shiny-server
@@ -50,8 +53,6 @@ RUN R -e "install.packages('textrank',     dependencies=TRUE, repos='https://clo
 RUN R -e "install.packages('ggwordcloud',  dependencies=TRUE, repos='https://cloud.r-project.org/')"
 RUN R -e "install.packages('RJSONIO',      dependencies=TRUE, repos='https://cloud.r-project.org/')"
 RUN R -e "install.packages('plyr',         dependencies=TRUE, repos='https://cloud.r-project.org/')"
-
-# Install ShinySky
 RUN R -e "install.packages('/srv/shiny-server/shinysky_0.1.3.tar.gz', repos=NULL, type='source')"
 
 # Expose the Shiny port
