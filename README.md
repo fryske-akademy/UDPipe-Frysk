@@ -26,3 +26,12 @@ docker run -p 3838:3838 udpipe-frysk
 
 Open:
 http://localhost:3838
+
+#
+#### Command line script
+
+udpipefrysk.R is an R command-line script. For installation instructions, check the header of the code. To see available options, run:
+
+```
+Rscript udpipefrysk.R -h
+```
