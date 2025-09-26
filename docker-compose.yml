@@ -1,7 +1,15 @@
-version: "3"
+version: "3.7"
 services:
-  shiny:
-    image: udpipe-frysk
-    build: .
-    ports:
-      - "3838:3838"
+    udpipe-frysk:
+       image: "${APPNAME}:${VERSION}"
+       deploy:
+          replicas: 1
+          resources:
+             limits:
+                memory: "3GB"
+       ports:
+          - "10007:3838"
+       networks:
+          - ${APPNAME}
+networks:
+    udpipe-frysk:
